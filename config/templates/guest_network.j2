@@ -1,0 +1,39 @@
+! ============================================================
+! Guest Network Provisioning Template
+! Generated automatically by the Network Automation Framework
+! Variables: guest_vlan_id, guest_vlan_name, guest_gateway,
+!            guest_network, guest_subnet_mask, guest_wildcard,
+!            dns_server
+! ============================================================
+
+! --- Step 1: Create the VLAN ---
+vlan {{ guest_vlan_id }}
+ name {{ guest_vlan_name }}
+
+! --- Step 2: Create the Layer 3 SVI (gateway for guests) ---
+interface Vlan{{ guest_vlan_id }}
+ description Guest WiFi - {{ guest_vlan_name }}
+ ip address {{ guest_gateway }} {{ guest_subnet_mask }}
+ no shutdown
+
+! --- Step 3: DHCP pool so guests get addresses automatically ---
+ip dhcp excluded-address {{ guest_gateway }}
+ip dhcp pool GUEST_{{ guest_vlan_id }}
+ network {{ guest_network }} {{ guest_subnet_mask }}
+ default-router {{ guest_gateway }}
+ dns-server {{ dns_server }}
+ lease 0 4
+
+! --- Step 4: ACL to isolate guests from internal networks ---
+ip access-list extended GUEST_ISOLATE_{{ guest_vlan_id }}
+ remark Allow guest internet traffic
+ permit ip {{ guest_network }} {{ guest_wildcard }} any
+ remark Block access to internal RFC-1918 ranges
+ deny   ip {{ guest_network }} {{ guest_wildcard }} 10.0.0.0 0.255.255.255
+ deny   ip {{ guest_network }} {{ guest_wildcard }} 172.16.0.0 0.15.255.255
+ deny   ip {{ guest_network }} {{ guest_wildcard }} 192.168.0.0 0.0.255.255
+
+! --- Step 5: Apply isolation ACL inbound on the guest SVI ---
+interface Vlan{{ guest_vlan_id }}
+ ip access-group GUEST_ISOLATE_{{ guest_vlan_id }} in
+

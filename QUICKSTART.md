@@ -110,7 +110,7 @@ python scripts/config_deploy.py --template interface_config.j2 \
 ## Need Help?
 
 - Check the main [README.md](README.md) for full documentation
-- Review [example_usage.py](examples/example_usage.py) for code examples
+- Review [examples/example_usage.py](examples/example_usage.py) for SDK usage patterns
 - Open an issue on GitHub
 - Check logs in `logs/network_automation.log`
 

@@ -6,8 +6,8 @@ Get up and running with the Network Automation Framework in 5 minutes!
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/network-automation-framework.git
-cd network-automation-framework
+git clone https://github.com/RathinRH/Network-Automation-and-Provisioning.git
+cd Network-Automation-and-Provisioning
 
 # Create virtual environment
 python -m venv venv
@@ -37,10 +37,17 @@ devices:
 
 ## Step 3: Test Connection (1 minute)
 
-Run the example script to test connectivity:
+Run the SSH pre-flight checker to verify all devices are reachable:
 
 ```bash
-python examples/example_usage.py
+python test_connection.py
+```
+
+You should see something like:
+```
+✅  192.168.1.1  (1.4s)   Cisco IOS Software, Version 15.6...
+Result: 1/1 devices reachable
+✅  All good — you can run:  python main_automation.py
 ```
 
 Or test a simple backup:

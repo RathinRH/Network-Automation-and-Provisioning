@@ -5,7 +5,7 @@
 <br/>
 
 [![Python](https://img.shields.io/badge/Python-3.7%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Netmiko](https://img.shields.io/badge/Netmiko-4.8%2B-00897B?style=for-the-badge&logo=cisco&logoColor=white)](https://github.com/ktbyers/netmiko)
+[![Netmiko](https://img.shields.io/badge/Netmiko-4.1%2B-00897B?style=for-the-badge&logo=cisco&logoColor=white)](https://github.com/ktbyers/netmiko)
 [![Flask](https://img.shields.io/badge/Flask-3.0%2B-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
 [![Tests](https://img.shields.io/badge/Tests-31%20Passing-success?style=for-the-badge&logo=pytest&logoColor=white)](tests/)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
@@ -339,8 +339,8 @@ Add your own rules in `config/compliance_rules.json` using `must_contain`, `must
 | Technology | Version | Purpose |
 |---|---|---|
 | **Python** | 3.7+ | Core language |
-| **Netmiko** | 4.8+ | Multi-vendor SSH automation (50+ devices) |
-| **Paramiko** | 5.0+ | SSH transport layer |
+| **Netmiko** | 4.1+ | Multi-vendor SSH automation (50+ devices) |
+| **Paramiko** | 3.0+ | SSH transport layer |
 | **PyYAML** | 6.0+ | Device inventory parsing |
 | **Jinja2** | 3.1+ | Configuration templating |
 | **Flask** | 3.0+ | Web dashboard & REST API |
@@ -414,11 +414,13 @@ All tests use **mocks** — no real network devices needed to run them.
 Pull requests welcome! To contribute:
 
 ```bash
-git fork https://github.com/RathinRH/Network-Automation-and-Provisioning.git
+# 1. Fork on GitHub → https://github.com/RathinRH/Network-Automation-and-Provisioning
+# 2. Clone your fork
+git clone https://github.com/YOUR_USERNAME/Network-Automation-and-Provisioning.git
 git checkout -b feature/your-feature
 git commit -m "Add your feature"
 git push origin feature/your-feature
-# Open a Pull Request
+# 3. Open a Pull Request on GitHub
 ```
 
 ---
